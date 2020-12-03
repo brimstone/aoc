@@ -1,6 +1,4 @@
-.PHONY: test
-test:
-	docker run --rm -it -v ${PWD}:${PWD} -w ${PWD} nimlang/nim testament p "tests/*.nim"
-
+INPUT ?= input
 %: %.nim
-	@docker run --rm -it -v ${PWD}:${PWD} -w ${PWD} nimlang/nim nim c -r $< input
+	@docker run --rm -it -v ${PWD}:${PWD} -w ${PWD} nimlang/nim nim c -r $< ${INPUT}
+	rm -f $@
